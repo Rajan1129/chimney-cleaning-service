@@ -12,10 +12,10 @@ export default function Layout() {
   const link = ({ isActive }) => 'px-3 py-2 rounded ' + (isActive ? 'text-teal-600 font-semibold' : 'hover:text-teal-600');
   return (<div className="pb-16 md:pb-0">
     <a href="#main" className="sr-only focus:not-sr-only">Skip to content</a>
-    <div className="sticky top-0 z-30 border-b bg-white"><div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+    <div className="sticky top-0 z-30 border-b bg-white"><div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5">
       <Link to="/" className="flex items-center gap-2.5">
-        <img src="/logo.png" alt={SITE.name} className="h-10 w-auto object-contain" />
-        <span className="text-lg font-bold text-navy-900">{SITE.name}</span>
+        <img src="/logo.png" alt={SITE.name} className="h-12 w-auto object-contain" />
+        <span className="text-xl font-bold tracking-tight text-navy-900 hidden sm:inline">{SITE.name}</span>
       </Link>
       <nav aria-label="Main" className="hidden gap-1 md:flex">{nav.map(([to, l]) => <NavLink key={to} to={to} end className={link}>{l}</NavLink>)}</nav>
       <a href={telHref} onClick={() => track('call_click', { location: 'header' })} className="btn btn-primary hidden py-2 md:inline-flex"><Phone size={16} />{SITE.phoneDisplay}</a>
@@ -25,12 +25,12 @@ export default function Layout() {
     <main id="main"><Outlet /></main>
     <footer className="bg-navy-900 text-slate-300"><div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-3">
       <div>
-        <div className="flex items-center gap-2.5">
-          <img src="/logo.png" alt={SITE.name} className="h-10 w-auto rounded bg-white p-1 object-contain" />
-          <span className="font-bold text-white">{SITE.name}</span>
+        <div className="mb-3 inline-block rounded-xl bg-white p-2 shadow-xs">
+          <img src="/logo.png" alt={SITE.name} className="h-12 w-auto object-contain" />
         </div>
-        <p className="mt-2">{addressLine}</p>
-        <a className="mt-1 block" href={telHref}>{SITE.phoneDisplay}</a>
+        <p className="font-bold text-white text-base">{SITE.name} Chimney & RO Service</p>
+        <p className="mt-1 text-sm text-slate-300">{addressLine}</p>
+        <a className="mt-2 block font-semibold text-teal-400" href={telHref}>{SITE.phoneDisplay}</a>
       </div>
       <div><p className="font-bold text-white">Service Locations</p><ul className="mt-2 space-y-1">{cities.map(c => <li key={c.slug}><Link to={`/locations/${c.slug}`}>{c.name}</Link></li>)}</ul><p className="mt-2 text-sm text-slate-400"><Link to="/locations" className="text-teal-400 underline">View all coverage areas &rarr;</Link></p></div>
       <div><p className="font-bold text-white">Links</p><ul className="mt-2 space-y-1">{[...nav, ['/privacy-policy', 'Privacy Policy']].map(([to, l]) => <li key={to}><Link to={to}>{l}</Link></li>)}</ul></div>
