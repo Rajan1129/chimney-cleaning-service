@@ -5,7 +5,7 @@ import { SITE, addressLine } from '../data/site';
 import { cities } from '../data/content';
 import { telHref, waHref } from '../lib/links';
 import { track } from '../lib/analytics';
-const nav = [['/', 'Home'], ['/services', 'Services'], ['/about', 'About'], ['/contact', 'Contact']];
+const nav = [['/', 'Home'], ['/services', 'Services'], ['/locations', 'Locations'], ['/about', 'About'], ['/contact', 'Contact']];
 export default function Layout() {
   const [open, setOpen] = useState(false); const { pathname } = useLocation();
   useEffect(() => { setOpen(false); window.scrollTo(0, 0); }, [pathname]);
@@ -32,7 +32,7 @@ export default function Layout() {
         <p className="mt-2">{addressLine}</p>
         <a className="mt-1 block" href={telHref}>{SITE.phoneDisplay}</a>
       </div>
-      <div><p className="font-bold text-white">Service areas</p><ul className="mt-2 space-y-1">{cities.map(c => <li key={c.slug}><Link to={`/chimney-service-${c.slug}`}>{c.name}</Link></li>)}</ul><p className="mt-2 text-sm">Availability confirmed per request.</p></div>
+      <div><p className="font-bold text-white">Service Locations</p><ul className="mt-2 space-y-1">{cities.map(c => <li key={c.slug}><Link to={`/locations/${c.slug}`}>{c.name}</Link></li>)}</ul><p className="mt-2 text-sm text-slate-400"><Link to="/locations" className="text-teal-400 underline">View all coverage areas &rarr;</Link></p></div>
       <div><p className="font-bold text-white">Links</p><ul className="mt-2 space-y-1">{[...nav, ['/privacy-policy', 'Privacy Policy']].map(([to, l]) => <li key={to}><Link to={to}>{l}</Link></li>)}</ul></div>
     </div></footer>
     <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 border-t bg-white p-2 md:hidden">

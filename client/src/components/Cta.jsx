@@ -9,22 +9,22 @@ export default function Cta({ location, dark = true }) {
   </div>);
 }
 export const TrustBar = () => (
-  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 pt-6 border-t border-slate-700/60 mt-8">
+  <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 pt-6 border-t border-slate-700/60 mt-8">
     <div className="flex items-center gap-2.5">
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-lg">★</span>
-      <div><p className="font-bold text-white text-base leading-none">4.9 / 5</p><p className="text-xs text-slate-300 mt-0.5">850+ Google Reviews</p></div>
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-base">✓</span>
+      <div><p className="font-bold text-white text-sm sm:text-base leading-none">Pay After Service</p><p className="text-xs text-slate-300 mt-0.5">Test run before payment</p></div>
     </div>
     <div className="flex items-center gap-2.5">
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-lg">⚡</span>
-      <div><p className="font-bold text-white text-base leading-none">60 Mins</p><p className="text-xs text-slate-300 mt-0.5">Fast Doorstep Visit</p></div>
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-base">📋</span>
+      <div><p className="font-bold text-white text-sm sm:text-base leading-none">Upfront Inspection</p><p className="text-xs text-slate-300 mt-0.5">Clear quote before work</p></div>
     </div>
     <div className="flex items-center gap-2.5">
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-lg">🛡️</span>
-      <div><p className="font-bold text-white text-base leading-none">100% Genuine</p><p className="text-xs text-slate-300 mt-0.5">Tested Spare Parts</p></div>
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-base">🛡️</span>
+      <div><p className="font-bold text-white text-sm sm:text-base leading-none">Genuine Spares</p><p className="text-xs text-slate-300 mt-0.5">Brand-compatible parts</p></div>
     </div>
     <div className="flex items-center gap-2.5">
-      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-lg">👨‍🔧</span>
-      <div><p className="font-bold text-white text-base leading-none">Expert Staff</p><p className="text-xs text-slate-300 mt-0.5">Verified Technicians</p></div>
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-base">🛵</span>
+      <div><p className="font-bold text-white text-sm sm:text-base leading-none">Doorstep Visit</p><p className="text-xs text-slate-300 mt-0.5">Across Chandigarh Tricity</p></div>
     </div>
   </div>
 );

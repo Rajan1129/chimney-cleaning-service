@@ -22,7 +22,7 @@ const Card = ({ children, image, imageAlt }) => (
 const AreaCards = ({ list = cities }) => (
   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {list.map(c => (
-      <Link key={c.slug} to={`/chimney-service-${c.slug}`} className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+      <Link key={c.slug} to={`/locations/${c.slug}`} className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
         <div className="relative h-40 w-full overflow-hidden bg-slate-100">
           <img src={c.image} alt={c.name} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -59,7 +59,7 @@ export function Home() {
     <Seo title={`${title} | ${SITE.name}`} description="Kitchen chimney repair, cleaning and installation in Chandigarh, Mohali, Kharar, Zirakpur, Panchkula and Ludhiana. Call or WhatsApp." jsonLd={[business(), webSite()]} />
     <Hero h1="Expert Kitchen Chimney Repair & Service in Chandigarh Tricity" image="/images/hero_chimney.jpg" imageAlt="Kitchen Chimney Service in Chandigarh">
       <div className="inline-flex items-center gap-2 rounded-full bg-teal-500/20 px-3 py-1 text-xs font-semibold text-teal-300 mb-4 border border-teal-500/30">
-        <span>✓</span> Top Rated Chimney Care in Tricity
+        <span>✓</span> Genuine Doorstep Chimney Care in Tricity
       </div>
       <p className="mb-6 text-base leading-relaxed text-slate-200">
         Doorstep repair, deep cleaning, and precision installation for all chimney brands. Experienced technicians, upfront diagnostic advice, and genuine parts.
@@ -245,17 +245,128 @@ export function ServicePage() {
   </>);
 }
 
+export function Locations() {
+  return (
+    <>
+      <Seo
+        path="/locations"
+        title={`Kitchen Chimney Service Locations & Coverage Areas | ${SITE.name}`}
+        description="Explore our doorstep kitchen chimney repair, deep cleaning, and installation service areas across Chandigarh Tricity, Mohali, Panchkula, Zirakpur, Kharar and Ludhiana."
+        jsonLd={[business(), breadcrumb([['Home', '/'], ['Locations', '/locations']])]}
+      />
+      <Hero
+        h1="Kitchen Chimney Service Coverage & Locations"
+        crumbs={<Crumbs items={[['Home', '/'], ['Locations', '/locations']]} />}
+        image="/images/tricity_apartments.jpg"
+        imageAlt="Tricity Service Locations"
+      >
+        <p className="mb-6 text-slate-200 leading-relaxed">
+          Kitchen King provides transparent doorstep chimney repair, chemical degreasing, and installation services across the entire Chandigarh Tricity region and neighboring cities.
+        </p>
+        <Cta location="locations-hero" />
+      </Hero>
+
+      <Section title="Explore our service cities">
+        <p className="mb-6 text-slate-600 max-w-2xl">
+          Select your city below for dedicated local sector listings, typical duct challenges, and fast appointment bookings:
+        </p>
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {cities.map(c => (
+            <div key={c.slug} className="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:shadow-lg">
+              <div className="relative h-48 w-full overflow-hidden bg-slate-100">
+                <img src={c.image} alt={c.name} className="h-full w-full object-cover transition duration-300 hover:scale-105" />
+                <span className="absolute bottom-3 left-3 rounded-md bg-navy-900/90 px-3 py-1 text-xs font-bold text-white backdrop-blur-xs">
+                  {c.name}
+                </span>
+              </div>
+              <div className="flex flex-1 flex-col justify-between p-5">
+                <div>
+                  <h3 className="text-lg font-bold text-navy-900">{c.h1}</h3>
+                  <p className="mt-1 text-xs text-slate-600 line-clamp-2">{c.desc}</p>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {c.sectors.slice(0, 4).map(s => (
+                      <span key={s} className="rounded-md bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-700">
+                        {s}
+                      </span>
+                    ))}
+                    {c.sectors.length > 4 && (
+                      <span className="rounded-md bg-teal-50 px-2 py-0.5 text-[11px] font-semibold text-teal-700">
+                        +{c.sectors.length - 4} more
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div className="mt-5 flex items-center justify-between border-t pt-4">
+                  <Link to={`/locations/${c.slug}`} className="font-semibold text-sm text-teal-600 hover:text-teal-700">
+                    View local service &rarr;
+                  </Link>
+                  <a href={waHref(c.name)} target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-slate-500 hover:text-navy-900">
+                    Quick WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </Section>
+
+      <Section title="How our location dispatch works" tint>
+        <div className="grid gap-6 md:grid-cols-3">
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-teal-100 font-bold text-teal-700 mb-3">📍</span>
+            <h4 className="font-bold text-navy-900">Central Hub in Chandigarh</h4>
+            <p className="mt-1 text-sm text-slate-600">Based in Sector 39, Maloya, our technicians are dispatched directly with tools and spare parts for immediate response.</p>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-teal-100 font-bold text-teal-700 mb-3">🛵</span>
+            <h4 className="font-bold text-navy-900">Daily Tricity Mobile Routes</h4>
+            <p className="mt-1 text-sm text-slate-600">Continuous daily routes through Mohali, Panchkula, Zirakpur, and Kharar ensure short travel times to your home.</p>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-teal-100 font-bold text-teal-700 mb-3">📅</span>
+            <h4 className="font-bold text-navy-900">Pre-Confirmed Appointments</h4>
+            <p className="mt-1 text-sm text-slate-600">Technicians arrive within your agreed window. Test run and full inspection conducted before payment.</p>
+          </div>
+        </div>
+      </Section>
+
+      <Section title="Need assistance in your area?">
+        <div className="rounded-2xl bg-navy-900 p-8 text-white md:p-12">
+          <h3 className="text-2xl font-bold md:text-3xl">Not Sure if We Cover Your Street?</h3>
+          <p className="mt-2 max-w-xl text-slate-300">Call or message us on WhatsApp with your locality or landmark. We will immediately check technician availability for your home.</p>
+          <div className="mt-6"><Cta location="locations-bottom" dark={true} /></div>
+        </div>
+      </Section>
+    </>
+  );
+}
+
 export function CityPage({ slug }) {
-  const c = cities.find(x => x.slug === slug);
+  const params = useParams();
+  const currentSlug = slug || params.slug;
+  const c = cities.find(x => x.slug === currentSlug);
   if (!c) return <NotFound />;
-  const path = `/chimney-service-${slug}`;
+  const path = `/locations/${currentSlug}`;
   return (<>
-    <Seo path={path} title={`${c.title} | ${SITE.name}`} description={c.desc} jsonLd={[business(), breadcrumb([['Home', '/'], [c.name, path]])]} />
-    <Hero h1={c.h1} crumbs={<Crumbs items={[['Home', '/'], [c.name, path]]} />} image={c.image} imageAlt={`Residential society chimney service in ${c.name}`}>
+    <Seo path={path} title={`${c.title} | ${SITE.name}`} description={c.desc} jsonLd={[business(), breadcrumb([['Home', '/'], ['Locations', '/locations'], [c.name, path]])]} />
+    <Hero h1={c.h1} crumbs={<Crumbs items={[['Home', '/'], ['Locations', '/locations'], [c.name, path]]} />} image={c.image} imageAlt={`Residential society chimney service in ${c.name}`}>
       <p className="mb-6 text-slate-200 leading-relaxed">{c.intro}</p>
-      <Cta location={slug} />
+      <Cta location={currentSlug} />
     </Hero>
-    <Section title={`What homeowners & societies in ${c.name} ask us about`}>
+    <Section title={`Sectors & Areas Covered in ${c.name}`}>
+      <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+        {c.sectors.map(s => (
+          <div key={s} className="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white p-3.5 shadow-xs">
+            <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-700 text-xs font-bold">✓</span>
+            <span className="text-sm font-semibold text-navy-900">{s}</span>
+          </div>
+        ))}
+      </div>
+      <p className="mt-4 text-xs text-slate-500">
+        Don't see your specific sector or colony listed? Call or WhatsApp us with your address—our technicians cover all residential and commercial addresses in and around {c.name}.
+      </p>
+    </Section>
+    <Section title={`What homeowners & societies in ${c.name} ask us about`} tint>
       <ul className="grid gap-3 sm:grid-cols-3">
         {c.local.map(l => (
           <li key={l} className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
@@ -264,7 +375,7 @@ export function CityPage({ slug }) {
         ))}
       </ul>
     </Section>
-    <Section title={`Services available in ${c.name}`} tint>
+    <Section title={`Services available in ${c.name}`}>
       <Cards items={services.filter(s => s.page).map(s => (
         <Card key={s.slug} image={s.image} imageAlt={s.title}>
           <Link className="text-xl font-bold text-navy-900 group-hover:text-teal-600 transition" to={`/services/${s.slug}`}>{s.title}</Link>
@@ -273,14 +384,15 @@ export function CityPage({ slug }) {
         </Card>
       ))} />
     </Section>
-    <Section title={`${c.name} chimney service FAQs`}>
+    <Section title={`${c.name} chimney service FAQs`} tint>
       <Faqs items={c.faqs} />
     </Section>
-    <Section title="Nearby service areas" tint>
+    <Section title="Nearby service areas">
       <AreaCards list={c.related.map(r => cities.find(x => x.slug === r)).filter(Boolean)} />
     </Section>
   </>);
 }
+
 
 export function About() {
   return (<>
