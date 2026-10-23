@@ -2,7 +2,17 @@ import { useState } from 'react';
 import axios from 'axios';
 import { SITE } from '../data/site';
 import { track } from '../lib/analytics';
-const OPTIONS = ['Chimney repair', 'Chimney cleaning', 'Chimney installation', 'Uninstall and reinstall', 'Maintenance', 'Other'];
+const OPTIONS = [
+  'Chimney repair',
+  'Chimney cleaning',
+  'Chimney installation',
+  'Hob & Gas Stove Service',
+  'Burner & Gas Leakage Repair',
+  'Uninstall and reinstall',
+  'Maintenance',
+  'RO Water Purifier',
+  'Other'
+];
 const empty = { name: '', phone: '', city: '', service: '', message: '', website: '' };
 function check(f) {
   const e = {};

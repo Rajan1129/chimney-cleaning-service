@@ -18,8 +18,26 @@ export default function Layout() {
         <span className="text-xl font-bold tracking-tight text-navy-900 hidden sm:inline">{SITE.name}</span>
       </Link>
       <nav aria-label="Main" className="hidden gap-1 md:flex">{nav.map(([to, l]) => <NavLink key={to} to={to} end className={link}>{l}</NavLink>)}</nav>
-      <a href={telHref} onClick={() => track('call_click', { location: 'header' })} className="btn btn-primary hidden py-2 md:inline-flex"><Phone size={16} />{SITE.phoneDisplay}</a>
-      <button className="md:hidden" aria-label="Menu" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</button>
+      <div className="flex items-center gap-2">
+        <a
+          href={telHref}
+          onClick={() => track('call_click', { location: 'header' })}
+          className="btn btn-primary flex items-center justify-center p-2 md:px-4 md:py-2"
+          aria-label={`Call ${SITE.phoneDisplay}`}
+          title={`Call ${SITE.phoneDisplay}`}
+        >
+          <Phone size={18} className="shrink-0" />
+          <span className="hidden md:inline ml-2">{SITE.phoneDisplay}</span>
+        </a>
+        <button
+          className="rounded-lg p-2 text-slate-700 hover:bg-slate-100 md:hidden"
+          aria-label="Menu"
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </div>
     </div>
     {open && <nav aria-label="Mobile" className="flex flex-col border-t px-4 py-2 md:hidden">{nav.map(([to, l]) => <NavLink key={to} to={to} end className={link}>{l}</NavLink>)}</nav>}</div>
     <main id="main"><Outlet /></main>
@@ -33,7 +51,7 @@ export default function Layout() {
         <a className="mt-2 block font-semibold text-teal-400" href={telHref}>{SITE.phoneDisplay}</a>
       </div>
       <div><p className="font-bold text-white">Service Locations</p><ul className="mt-2 space-y-1">{cities.map(c => <li key={c.slug}><Link to={`/chimney-service-in-${c.slug}`}>{c.name}</Link></li>)}</ul><p className="mt-2 text-sm text-slate-400"><Link to="/locations" className="text-teal-400 underline">View all coverage areas &rarr;</Link></p></div>
-      <div><p className="font-bold text-white">Links</p><ul className="mt-2 space-y-1">{[...nav, ['/privacy-policy', 'Privacy Policy']].map(([to, l]) => <li key={to}><Link to={to}>{l}</Link></li>)}</ul></div>
+      <div><p className="font-bold text-white">Links</p><ul className="mt-2 space-y-1">{[...nav, ['/privacy-policy', 'Privacy Policy'], ['/admin', 'Admin Login']].map(([to, l]) => <li key={to}><Link to={to}>{l}</Link></li>)}</ul></div>
     </div></footer>
     <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 border-t bg-white p-2 md:hidden">
       <a href={telHref} onClick={() => track('call_click', { location: 'sticky' })} className="btn btn-primary"><Phone size={18} />Call Now</a>

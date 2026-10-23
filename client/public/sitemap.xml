@@ -6,6 +6,7 @@
   <url><loc>http://localhost:5173/services/chimney-cleaning</loc></url>
   <url><loc>http://localhost:5173/services/chimney-installation</loc></url>
   <url><loc>http://localhost:5173/services/chimney-maintenance</loc></url>
+  <url><loc>http://localhost:5173/services/hob-gas-stove</loc></url>
   <url><loc>http://localhost:5173/locations</loc></url>
   <url><loc>http://localhost:5173/chimney-service-in-chandigarh</loc></url>
   <url><loc>http://localhost:5173/chimney-service-in-mohali</loc></url>
