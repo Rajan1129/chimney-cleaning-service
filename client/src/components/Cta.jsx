@@ -42,7 +42,7 @@ export const Hero = ({ h1, children, crumbs, image, imageAlt }) => (
         {image && (
           <div className="lg:col-span-5">
             <div className="relative overflow-hidden rounded-2xl border border-slate-700/60 shadow-2xl">
-              <img src={image} alt={imageAlt || h1} className="h-64 w-full object-cover sm:h-80 md:h-96" />
+              <img src={image} alt={imageAlt || h1} className="h-64 w-full object-cover object-top sm:h-80 md:h-96" />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
             </div>
           </div>
