@@ -8,7 +8,27 @@ export default function Cta({ location, dark = true }) {
     <a href={waHref(location)} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', { location })} className={'btn ' + (dark ? 'btn-wa' : 'btn-outline')}><MessageCircle size={18} />WhatsApp Us</a>
   </div>);
 }
-export const Faqs = ({ items }) => (<div className="divide-y rounded-xl border">{items.map(([q, a]) => (<details key={q} className="group p-4"><summary className="cursor-pointer font-semibold text-navy-900">{q}</summary><p className="mt-2 text-slate-600">{a}</p></details>))}</div>);
+export const TrustBar = () => (
+  <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 pt-6 border-t border-slate-700/60 mt-8">
+    <div className="flex items-center gap-2.5">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-lg">★</span>
+      <div><p className="font-bold text-white text-base leading-none">4.9 / 5</p><p className="text-xs text-slate-300 mt-0.5">850+ Google Reviews</p></div>
+    </div>
+    <div className="flex items-center gap-2.5">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-lg">⚡</span>
+      <div><p className="font-bold text-white text-base leading-none">60 Mins</p><p className="text-xs text-slate-300 mt-0.5">Fast Doorstep Visit</p></div>
+    </div>
+    <div className="flex items-center gap-2.5">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-lg">🛡️</span>
+      <div><p className="font-bold text-white text-base leading-none">100% Genuine</p><p className="text-xs text-slate-300 mt-0.5">Tested Spare Parts</p></div>
+    </div>
+    <div className="flex items-center gap-2.5">
+      <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-500/20 text-teal-400 font-bold text-lg">👨‍🔧</span>
+      <div><p className="font-bold text-white text-base leading-none">Expert Staff</p><p className="text-xs text-slate-300 mt-0.5">Verified Technicians</p></div>
+    </div>
+  </div>
+);
+export const Faqs = ({ items }) => (<div className="divide-y rounded-xl border border-slate-200 bg-white shadow-sm">{items.map(([q, a]) => (<details key={q} className="group p-5"><summary className="cursor-pointer font-semibold text-navy-900 list-none flex justify-between items-center">{q}<span className="text-teal-600 font-bold transition group-open:rotate-45 text-xl leading-none">+</span></summary><p className="mt-3 text-slate-600 leading-relaxed text-sm">{a}</p></details>))}</div>);
 export const Section = ({ title, children, tint }) => (<section className={tint ? 'bg-slate-50' : ''}><div className="mx-auto max-w-6xl px-4 py-12"><h2 className="mb-6 text-2xl font-bold text-navy-900">{title}</h2>{children}</div></section>);
 export const Hero = ({ h1, children, crumbs, image, imageAlt }) => (
   <header className="bg-navy-900 text-white">
