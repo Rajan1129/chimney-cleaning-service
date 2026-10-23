@@ -1,6 +1,6 @@
 // Single source of truth for business details. Edit here only.
 export const SITE = {
-  name: import.meta.env.VITE_BUSINESS_NAME || 'Kitchen Chimney Service',
+  name: import.meta.env.VITE_BUSINESS_NAME || 'Kitchen King',
   phoneDisplay: '+91 62630 13446', phoneTel: '+916263013446', waNumber: '916263013446',
   address: { street: 'Sector 39, Maloya', city: 'Chandigarh', postal: '160025', country: 'IN' },
   url: (import.meta.env.VITE_SITE_URL || '').replace(/\/$/, ''),
