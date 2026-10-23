@@ -10,4 +10,24 @@ export default function Cta({ location, dark = true }) {
 }
 export const Faqs = ({ items }) => (<div className="divide-y rounded-xl border">{items.map(([q, a]) => (<details key={q} className="group p-4"><summary className="cursor-pointer font-semibold text-navy-900">{q}</summary><p className="mt-2 text-slate-600">{a}</p></details>))}</div>);
 export const Section = ({ title, children, tint }) => (<section className={tint ? 'bg-slate-50' : ''}><div className="mx-auto max-w-6xl px-4 py-12"><h2 className="mb-6 text-2xl font-bold text-navy-900">{title}</h2>{children}</div></section>);
-export const Hero = ({ h1, children, crumbs }) => (<header className="bg-navy-900 text-white"><div className="mx-auto max-w-6xl px-4 py-14">{crumbs}<h1 className="max-w-3xl text-3xl font-bold leading-tight md:text-5xl">{h1}</h1><div className="mt-4 max-w-2xl text-slate-200">{children}</div></div></header>);
+export const Hero = ({ h1, children, crumbs, image, imageAlt }) => (
+  <header className="bg-navy-900 text-white">
+    <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
+      {crumbs}
+      <div className={image ? "grid items-center gap-8 lg:grid-cols-12" : ""}>
+        <div className={image ? "lg:col-span-7" : ""}>
+          <h1 className="max-w-3xl text-3xl font-bold leading-tight md:text-5xl">{h1}</h1>
+          <div className="mt-4 max-w-2xl text-slate-200">{children}</div>
+        </div>
+        {image && (
+          <div className="lg:col-span-5">
+            <div className="relative overflow-hidden rounded-2xl border border-slate-700/60 shadow-2xl">
+              <img src={image} alt={imageAlt || h1} className="h-64 w-full object-cover sm:h-80 md:h-96" />
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  </header>
+);

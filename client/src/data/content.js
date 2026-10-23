@@ -6,29 +6,33 @@ export const processSteps = [
 ];
 export const services = [
   { slug: 'chimney-repair', page: true, title: 'Kitchen Chimney Repair', short: 'Diagnosis and repair for chimneys that are weak, noisy or not switching on.',
+    image: '/images/chimney_technician.jpg',
     includes: ['Fault inspection', 'Motor, switch and control checks', 'Repair or replacement advice', 'Test run after repair'],
     symptoms: ['Poor suction', 'Rattling or humming noise', 'Chimney will not switch on', 'Smoke or smell spreading in the kitchen'],
     intro: 'A chimney that stops pulling smoke is usually down to a blocked filter, a worn motor or a loose part. We inspect first, then explain what the fix involves.',
     faqs: [['Can you repair every brand?', 'Not necessarily. Parts availability depends on the brand and model, so we confirm after inspection.'], ['Should I repair or replace?', 'If the repair is minor, repairing makes sense. If the unit is heavily worn we will tell you plainly.']] },
   { slug: 'chimney-cleaning', page: true, title: 'Chimney Deep Cleaning', short: 'Removal of oil and grease from filters, blades and the body.',
+    image: '/images/chimney_technician.jpg',
     includes: ['Filter removal and degreasing', 'Cleaning of the interior and blades where accessible', 'Oil collector cleaning', 'Reassembly and test'],
     symptoms: ['Dripping oil', 'Sticky, clogged filters', 'Reduced airflow', 'Strong cooking smell lingering'],
     intro: 'Cooking oil settles inside a chimney over time. Regular deep cleaning restores airflow and reduces strain on the motor.',
     faqs: [['How often should a chimney be cleaned?', 'It depends on how much you fry and cook. Homes with heavy daily cooking need it more often than light-use kitchens.'], ['Do I need to remove the chimney?', 'Usually not. Most cleaning is done in place.']] },
   { slug: 'chimney-installation', page: true, title: 'Chimney Installation', short: 'Wall or ceiling mounting, ducting and electrical connection for a new chimney.',
+    image: '/images/hero_chimney.jpg',
     includes: ['Mounting at a suitable height', 'Duct routing and fitting', 'Connection to your power point', 'Test run'],
     symptoms: ['New chimney not yet fitted', 'Moving to a new home', 'Duct too long or sharply bent', 'Uncertain about mounting height'],
     intro: 'Correct installation affects how well a chimney performs. Height, duct length and bends all matter, so we check your kitchen layout first.',
     faqs: [['Do you supply the chimney?', 'We install chimneys you have bought. Ask us if you need anything else.'], ['Can you fit my chimney after a renovation?', 'Yes, subject to wall and duct conditions on site.']] },
   { slug: 'chimney-maintenance', page: true, title: 'Chimney Maintenance', short: 'Routine checks to keep your chimney working reliably.',
+    image: '/images/hero_chimney.jpg',
     includes: ['Filter and oil collector cleaning', 'Motor and fan check', 'Control and light check', 'Advice on upkeep'],
     symptoms: ['Chimney has not been serviced in a long time', 'Gradual loss of suction', 'Heavy daily cooking', 'Preparing a rented or older kitchen'],
     intro: 'Small problems are cheaper to fix than failures. Routine maintenance catches wear early and keeps airflow steady.',
     faqs: [['Is maintenance different from cleaning?', 'Cleaning removes grease. Maintenance also checks the motor, controls and fittings.'], ['Do you offer yearly plans?', 'Ask us on call about what is currently available.']] },
-  { slug: 'uninstall-reinstall', title: 'Uninstallation and Reinstallation', short: 'Safe removal and refitting when you repaint, renovate or move.', includes: ['Disconnection and removal', 'Duct and bracket handling', 'Refitting and test'] },
-  { slug: 'filter-cleaning', title: 'Chimney Filter Cleaning', short: 'Degreasing of baffle, mesh or cassette filters.', includes: ['Filter removal', 'Degreasing', 'Refit and airflow check'] },
-  { slug: 'motor-suction', title: 'Motor and Suction Troubleshooting', short: 'Finding why suction is weak or the motor struggles.', includes: ['Motor check', 'Duct blockage check', 'Capacitor and wiring inspection where applicable'] },
-  { slug: 'noise-performance', title: 'Noise and Performance Troubleshooting', short: 'Tracking down vibration, rattling and humming.', includes: ['Blade and fixing check', 'Loose part tightening', 'Test run'] }
+  { slug: 'uninstall-reinstall', title: 'Uninstallation and Reinstallation', short: 'Safe removal and refitting when you repaint, renovate or move.', image: '/images/hero_chimney.jpg', includes: ['Disconnection and removal', 'Duct and bracket handling', 'Refitting and test'] },
+  { slug: 'filter-cleaning', title: 'Chimney Filter Cleaning', short: 'Degreasing of baffle, mesh or cassette filters.', image: '/images/chimney_technician.jpg', includes: ['Filter removal', 'Degreasing', 'Refit and airflow check'] },
+  { slug: 'motor-suction', title: 'Motor and Suction Troubleshooting', short: 'Finding why suction is weak or the motor struggles.', image: '/images/chimney_technician.jpg', includes: ['Motor check', 'Duct blockage check', 'Capacitor and wiring inspection where applicable'] },
+  { slug: 'noise-performance', title: 'Noise and Performance Troubleshooting', short: 'Tracking down vibration, rattling and humming.', image: '/images/hero_chimney.jpg', includes: ['Blade and fixing check', 'Loose part tightening', 'Test run'] }
 ];
 export const problems = [['Chimney not suctioning properly', 'Often a clogged filter or blocked duct.'], ['Excessive noise', 'Loose parts, unbalanced blades or a worn motor.'], ['Oil and grease buildup', 'Grease coats filters and the interior.'], ['Motor problems', 'Humming, slow start or overheating.'], ['Filter blockage', 'Filters saturated with oil restrict airflow.'], ['Chimney not switching on', 'Power, switch or control board issues.']];
 export const cities = [

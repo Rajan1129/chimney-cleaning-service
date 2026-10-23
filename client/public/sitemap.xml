@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>http://localhost:5173/</loc></url>
+  <url><loc>http://localhost:5173/services</loc></url>
+  <url><loc>http://localhost:5173/services/chimney-repair</loc></url>
+  <url><loc>http://localhost:5173/services/chimney-cleaning</loc></url>
+  <url><loc>http://localhost:5173/services/chimney-installation</loc></url>
+  <url><loc>http://localhost:5173/services/chimney-maintenance</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-chandigarh</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-mohali</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-kharar</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-zirakpur</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-panchkula</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-ludhiana</loc></url>
+  <url><loc>http://localhost:5173/about</loc></url>
+  <url><loc>http://localhost:5173/contact</loc></url>
+  <url><loc>http://localhost:5173/privacy-policy</loc></url>
+</urlset>
