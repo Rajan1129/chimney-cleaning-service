@@ -1,4 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
+import { Phone, MessageCircle } from 'lucide-react';
 import Seo, { business, breadcrumb, webSite, serviceLd } from '../components/Seo';
 import Cta, { Faqs, Section, Hero, TrustBar } from '../components/Cta';
 import EnquiryForm from '../components/EnquiryForm';
@@ -99,15 +100,62 @@ export function Home() {
     </Section>
 
     <Section title="Common chimney problems we solve" tint>
-      <Cards items={problems.map(([t, d], i) => (
-        <div key={t} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
-          <div className="flex items-center gap-3">
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-50 text-base font-bold text-red-600">!</span>
-            <h3 className="font-bold text-navy-900">{t}</h3>
+      <div className="grid items-start gap-8 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md">
+            <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
+              <img
+                src="/images/chimney_problems.jpg"
+                alt="Common Kitchen Chimney Issues Diagnosed & Repaired"
+                className="h-full w-full object-cover object-top transition duration-500 hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 text-white">
+                <span className="inline-block rounded-md bg-teal-500 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-navy-900">
+                  Doorstep Diagnosis
+                </span>
+                <p className="mt-1.5 text-base font-bold leading-snug">Unsure what is wrong with your chimney?</p>
+              </div>
+            </div>
+            <div className="p-5 sm:p-6">
+              <p className="text-sm leading-relaxed text-slate-600">
+                Most kitchen chimney breakdowns stem from saturated grease in baffle filters, motor capacitor wear, or bent blower blades. Our technician inspects suction, noise, and electrical lines on site before starting work.
+              </p>
+              <div className="mt-5 flex flex-col gap-2.5">
+                <a href={telHref} className="btn btn-primary justify-center py-2.5 text-sm">
+                  <Phone size={16} /> Call for Diagnosis
+                </a>
+                <a href={waHref("problems")} target="_blank" rel="noopener noreferrer" className="btn btn-wa justify-center py-2.5 text-sm">
+                  <MessageCircle size={16} /> Send Chimney Photo on WhatsApp
+                </a>
+              </div>
+            </div>
           </div>
-          <p className="mt-2 text-sm leading-relaxed text-slate-600">{d}</p>
         </div>
-      ))} />
+
+        <div className="lg:col-span-7">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {problems.map(([t, d], i) => (
+              <div key={t} className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-xs transition duration-200 hover:-translate-y-0.5 hover:border-teal-500/60 hover:shadow-md">
+                <div>
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-50 text-base font-bold text-red-600">
+                      !
+                    </span>
+                    <h3 className="font-bold text-navy-900 text-base">{t}</h3>
+                  </div>
+                  <p className="mt-2.5 text-sm leading-relaxed text-slate-600">{d}</p>
+                </div>
+                <div className="mt-4 border-t border-slate-100 pt-3">
+                  <span className="text-xs font-semibold text-teal-600 flex items-center gap-1.5">
+                    ✓ Same-day visit available
+                  </span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </Section>
 
     <Section title="How our service works">
