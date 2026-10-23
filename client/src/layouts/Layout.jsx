@@ -32,7 +32,7 @@ export default function Layout() {
         <p className="mt-1 text-sm text-slate-300">{addressLine}</p>
         <a className="mt-2 block font-semibold text-teal-400" href={telHref}>{SITE.phoneDisplay}</a>
       </div>
-      <div><p className="font-bold text-white">Service Locations</p><ul className="mt-2 space-y-1">{cities.map(c => <li key={c.slug}><Link to={`/locations/${c.slug}`}>{c.name}</Link></li>)}</ul><p className="mt-2 text-sm text-slate-400"><Link to="/locations" className="text-teal-400 underline">View all coverage areas &rarr;</Link></p></div>
+      <div><p className="font-bold text-white">Service Locations</p><ul className="mt-2 space-y-1">{cities.map(c => <li key={c.slug}><Link to={`/chimney-service-in-${c.slug}`}>{c.name}</Link></li>)}</ul><p className="mt-2 text-sm text-slate-400"><Link to="/locations" className="text-teal-400 underline">View all coverage areas &rarr;</Link></p></div>
       <div><p className="font-bold text-white">Links</p><ul className="mt-2 space-y-1">{[...nav, ['/privacy-policy', 'Privacy Policy']].map(([to, l]) => <li key={to}><Link to={to}>{l}</Link></li>)}</ul></div>
     </div></footer>
     <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 border-t bg-white p-2 md:hidden">

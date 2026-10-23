@@ -22,7 +22,7 @@ const Card = ({ children, image, imageAlt }) => (
 const AreaCards = ({ list = cities }) => (
   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {list.map(c => (
-      <Link key={c.slug} to={`/locations/${c.slug}`} className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
+      <Link key={c.slug} to={`/chimney-service-in-${c.slug}`} className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
         <div className="relative h-40 w-full overflow-hidden bg-slate-100">
           <img src={c.image} alt={c.name} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
@@ -297,7 +297,7 @@ export function Locations() {
                   </div>
                 </div>
                 <div className="mt-5 flex items-center justify-between border-t pt-4">
-                  <Link to={`/locations/${c.slug}`} className="font-semibold text-sm text-teal-600 hover:text-teal-700">
+                  <Link to={`/chimney-service-in-${c.slug}`} className="font-semibold text-sm text-teal-600 hover:text-teal-700">
                     View local service &rarr;
                   </Link>
                   <a href={waHref(c.name)} target="_blank" rel="noopener noreferrer" className="text-xs font-medium text-slate-500 hover:text-navy-900">
@@ -346,7 +346,7 @@ export function CityPage({ slug }) {
   const currentSlug = slug || params.slug;
   const c = cities.find(x => x.slug === currentSlug);
   if (!c) return <NotFound />;
-  const path = `/locations/${currentSlug}`;
+  const path = `/chimney-service-in-${currentSlug}`;
   return (<>
     <Seo path={path} title={`${c.title} | ${SITE.name}`} description={c.desc} jsonLd={[business(), breadcrumb([['Home', '/'], ['Locations', '/locations'], [c.name, path]])]} />
     <Hero h1={c.h1} crumbs={<Crumbs items={[['Home', '/'], ['Locations', '/locations'], [c.name, path]]} />} image={c.image} imageAlt={`Residential society chimney service in ${c.name}`}>

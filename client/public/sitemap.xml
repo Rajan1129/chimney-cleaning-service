@@ -7,6 +7,12 @@
   <url><loc>http://localhost:5173/services/chimney-installation</loc></url>
   <url><loc>http://localhost:5173/services/chimney-maintenance</loc></url>
   <url><loc>http://localhost:5173/locations</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-in-chandigarh</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-in-mohali</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-in-kharar</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-in-zirakpur</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-in-panchkula</loc></url>
+  <url><loc>http://localhost:5173/chimney-service-in-ludhiana</loc></url>
   <url><loc>http://localhost:5173/locations/chandigarh</loc></url>
   <url><loc>http://localhost:5173/locations/mohali</loc></url>
   <url><loc>http://localhost:5173/locations/kharar</loc></url>

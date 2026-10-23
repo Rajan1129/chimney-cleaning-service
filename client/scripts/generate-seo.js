@@ -7,6 +7,7 @@ const paths = [
   '/services',
   ...services.filter(s => s.page).map(s => `/services/${s.slug}`),
   '/locations',
+  ...cities.map(c => `/chimney-service-in-${c.slug}`),
   ...cities.map(c => `/locations/${c.slug}`),
   ...cities.map(c => `/chimney-service-${c.slug}`),
   '/about',
