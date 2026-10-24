@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-  @apply text-slate-800 antialiased bg-slate-50/50;
+  @apply text-slate-800 antialiased bg-slate-50/50 selection:bg-teal-500 selection:text-white;
 }
 
 :focus-visible {
@@ -16,37 +16,112 @@ body {
 }
 
 .btn-primary {
-  @apply bg-teal-600 text-white hover:bg-teal-500 shadow-md shadow-teal-600/20 hover:shadow-lg hover:shadow-teal-600/30;
+  @apply bg-teal-600 text-white hover:bg-teal-500 shadow-md shadow-teal-600/25 hover:shadow-xl hover:shadow-teal-600/35 hover:-translate-y-0.5;
 }
 
 .btn-wa {
-  @apply bg-white text-navy-900 hover:bg-slate-100 shadow-md hover:shadow-lg;
+  @apply bg-white text-navy-900 hover:bg-slate-100 shadow-md hover:shadow-xl hover:-translate-y-0.5;
 }
 
 .btn-outline {
-  @apply border border-slate-300 text-navy-900 hover:bg-slate-50;
+  @apply border border-slate-300 text-navy-900 hover:bg-slate-50 hover:border-slate-400;
 }
 
 /* Glassmorphism utilities */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   border: 1px solid rgba(255, 255, 255, 0.5);
-  box-shadow: 0 8px 32px 0 rgba(11, 31, 58, 0.06);
+  box-shadow: 0 10px 35px 0 rgba(11, 31, 58, 0.07);
 }
 
 .glass-panel-dark {
-  background: rgba(11, 31, 58, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.35);
+  background: rgba(11, 31, 58, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.4);
 }
 
 .glass-pill {
   background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Interactive Shimmer Button Effect */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shine::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: skewX(-25deg) translateX(-180%);
+  animation: shine 4s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+@keyframes shine {
+  0%, 30% {
+    transform: skewX(-25deg) translateX(-180%);
+  }
+  70%, 100% {
+    transform: skewX(-25deg) translateX(300%);
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 4.5s ease-in-out 1.5s infinite;
+}
+
+/* Tech Grid Dot Patterns */
+.bg-grid-dots {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+.bg-grid-dots-teal {
+  background-image: radial-gradient(rgba(14, 154, 167, 0.15) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+/* Pulse Glow */
+.glow-pulse {
+  animation: pulseGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 15px rgba(14, 154, 167, 0.25);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(14, 154, 167, 0.6);
+  }
 }

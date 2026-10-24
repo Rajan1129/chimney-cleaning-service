@@ -8,14 +8,14 @@ import { services, cities, problems, processSteps, homeFaqs, brands } from '../d
 import { telHref, waHref } from '../lib/links';
 import BeforeAfterSection from '../components/BeforeAfterSection';
 
-const Crumbs = ({ items }) => <nav aria-label="Breadcrumb" className="mb-3 text-sm text-slate-300">{items.map(([l, p], i) => <span key={p}>{i > 0 && ' / '}{i < items.length - 1 ? <Link to={p} className="underline">{l}</Link> : l}</span>)}</nav>;
+const Crumbs = ({ items }) => <nav aria-label="Breadcrumb" className="mb-3 text-sm text-slate-300">{items.map(([l, p], i) => <span key={p}>{i > 0 && ' / '}{i < items.length - 1 ? <Link to={p} className="underline hover:text-teal-300 transition">{l}</Link> : l}</span>)}</nav>;
 const Cards = ({ items }) => <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{items}</div>;
 const Card = ({ children, image, imageAlt }) => (
-  <div className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+  <div className="group flex flex-col overflow-hidden rounded-2xl border border-slate-200/90 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-teal-500/50">
     {image && (
       <div className="relative h-48 w-full overflow-hidden bg-slate-100">
-        <img src={image} alt={imageAlt || ""} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+        <img src={image} alt={imageAlt || ""} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+        <div className="absolute inset-0 bg-gradient-to-t from-navy-950/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
     )}
     <div className="flex flex-1 flex-col justify-between p-6">{children}</div>
@@ -24,20 +24,22 @@ const Card = ({ children, image, imageAlt }) => (
 const AreaCards = ({ list = cities }) => (
   <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
     {list.map(c => (
-      <Link key={c.slug} to={`/chimney-service-in-${c.slug}`} className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-lg">
-        <div className="relative h-40 w-full overflow-hidden bg-slate-100">
-          <img src={c.image} alt={c.name} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-          <span className="absolute bottom-3 left-3 rounded-md bg-teal-600/90 px-2.5 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+      <Link key={c.slug} to={`/chimney-service-in-${c.slug}`} className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:border-teal-400/60">
+        <div className="relative h-44 w-full overflow-hidden bg-slate-100">
+          <img src={c.image} alt={c.name} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-black/20 to-transparent" />
+          <span className="absolute bottom-3 left-3 rounded-lg backdrop-blur-md bg-teal-600/90 border border-white/20 px-3 py-1 text-xs font-bold text-white shadow-md">
             {c.name}
           </span>
         </div>
-        <div className="flex items-center justify-between p-4">
+        <div className="flex items-center justify-between p-4 bg-white">
           <div>
             <h4 className="font-bold text-navy-900 group-hover:text-teal-600 transition">Chimney Service in {c.name}</h4>
             <p className="mt-0.5 text-xs text-slate-500">Doorstep technicians ready</p>
           </div>
-          <span className="text-lg font-bold text-teal-600 transition group-hover:translate-x-1">&rarr;</span>
+          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-50 text-teal-600 font-bold group-hover:bg-teal-500 group-hover:text-white group-hover:translate-x-1 transition-all">
+            &rarr;
+          </span>
         </div>
       </Link>
     ))}
@@ -46,10 +48,12 @@ const AreaCards = ({ list = cities }) => (
 const Process = () => (
   <ol className="grid gap-4 md:grid-cols-4">
     {processSteps.map(([t, d], i) => (
-      <li key={t} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
-        <span className="inline-flex h-8 w-8 items-center justify-center rounded-lg bg-teal-100 font-bold text-teal-700">0{i + 1}</span>
-        <p className="mt-3 font-bold text-navy-900">{t}</p>
-        <p className="mt-1 text-sm leading-relaxed text-slate-600">{d}</p>
+      <li key={t} className="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-teal-400/50">
+        <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-teal-500 to-teal-700 font-black text-white text-sm shadow-md shadow-teal-500/25 group-hover:scale-110 transition">
+          0{i + 1}
+        </span>
+        <p className="mt-4 font-bold text-navy-900 text-base">{t}</p>
+        <p className="mt-1.5 text-sm leading-relaxed text-slate-600">{d}</p>
       </li>
     ))}
   </ol>
@@ -66,8 +70,9 @@ export function Home() {
       jsonLd={[business(), webSite(), faqLd(homeFaqs)]}
     />
     <Hero h1="Expert Kitchen Chimney Repair & Service in Chandigarh Tricity" image="/images/hero_chimney.jpg" imageAlt="Kitchen Chimney Service in Chandigarh">
-      <div className="inline-flex items-center gap-2 rounded-full bg-teal-500/20 px-3 py-1 text-xs font-semibold text-teal-300 mb-4 border border-teal-500/30">
-        <span>✓</span> Genuine Doorstep Chimney Care in Tricity
+      <div className="inline-flex items-center gap-2 rounded-full backdrop-blur-md bg-teal-500/20 px-3.5 py-1 text-xs font-bold text-teal-300 mb-4 border border-teal-500/40 shadow-sm">
+        <span className="h-1.5 w-1.5 rounded-full bg-teal-300 animate-ping"></span>
+        <span>Genuine Doorstep Chimney Care in Tricity</span>
       </div>
       <p className="mb-6 text-base leading-relaxed text-slate-200">
         Doorstep repair, deep cleaning, and precision installation for all chimney brands. Experienced technicians, upfront diagnostic advice, and genuine parts.
@@ -77,14 +82,14 @@ export function Home() {
     </Hero>
 
     {/* Brand Bar */}
-    <div className="border-b bg-white py-6">
+    <div className="border-b bg-gradient-to-r from-slate-50 via-white to-slate-50 py-8">
       <div className="mx-auto max-w-6xl px-4">
-        <p className="mb-3 text-center text-xs font-semibold uppercase tracking-wider text-slate-500">
-          Servicing All Major Kitchen Chimney Brands
+        <p className="mb-4 text-center text-xs font-bold uppercase tracking-wider text-slate-500">
+          Servicing All Major Kitchen Chimney & Hob Brands
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-3">
+        <div className="flex flex-wrap items-center justify-center gap-2.5">
           {brands.map(b => (
-            <span key={b} className="rounded-lg border border-slate-200 bg-slate-50 px-3.5 py-1.5 text-xs font-semibold text-slate-700 shadow-2xs">
+            <span key={b} className="rounded-xl border border-slate-200/90 bg-white px-4 py-2 text-xs font-bold text-slate-700 shadow-2xs hover:border-teal-500/50 hover:text-teal-700 hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
               {b}
             </span>
           ))}
@@ -109,31 +114,31 @@ export function Home() {
     <Section title="Common chimney problems we solve" tint>
       <div className="grid items-start gap-8 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-md">
+          <div className="group overflow-hidden rounded-3xl border border-slate-200/90 bg-white shadow-lg transition-all duration-300 hover:shadow-2xl">
             <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
               <img
                 src="/images/chimney_problems.jpg"
                 alt="Common Kitchen Chimney Issues Diagnosed & Repaired"
-                className="h-full w-full object-cover object-top transition duration-500 hover:scale-105"
+                className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy-900/80 via-navy-900/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy-950/85 via-navy-900/30 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 text-white">
-                <span className="inline-block rounded-md bg-teal-500 px-2.5 py-1 text-xs font-bold uppercase tracking-wider text-navy-900">
+                <span className="inline-block rounded-md backdrop-blur-md bg-teal-500/90 border border-teal-300/40 px-3 py-1 text-xs font-bold uppercase tracking-wider text-navy-950 shadow-md">
                   Doorstep Diagnosis
                 </span>
-                <p className="mt-1.5 text-base font-bold leading-snug">Unsure what is wrong with your chimney?</p>
+                <p className="mt-2 text-lg font-black leading-snug">Unsure what is wrong with your chimney?</p>
               </div>
             </div>
-            <div className="p-5 sm:p-6">
+            <div className="p-6">
               <p className="text-sm leading-relaxed text-slate-600">
                 Most kitchen chimney breakdowns stem from saturated grease in baffle filters, motor capacitor wear, or bent blower blades. Our technician inspects suction, noise, and electrical lines on site before starting work.
               </p>
-              <div className="mt-5 flex flex-col gap-2.5">
-                <a href={telHref} className="btn btn-primary justify-center py-2.5 text-sm">
-                  <Phone size={16} /> Call for Diagnosis
+              <div className="mt-6 flex flex-col gap-3">
+                <a href={telHref} className="btn btn-primary btn-shine justify-center py-3 text-sm font-bold shadow-md shadow-teal-600/20">
+                  <Phone size={16} /> Call for Same-Day Diagnosis
                 </a>
-                <a href={waHref("problems")} target="_blank" rel="noopener noreferrer" className="btn btn-wa justify-center py-2.5 text-sm">
-                  <MessageCircle size={16} /> Send Chimney Photo on WhatsApp
+                <a href={waHref("problems")} target="_blank" rel="noopener noreferrer" className="btn btn-wa justify-center py-3 text-sm font-bold">
+                  <MessageCircle size={16} className="text-emerald-500" /> Send Chimney Photo on WhatsApp
                 </a>
               </div>
             </div>
@@ -143,19 +148,23 @@ export function Home() {
         <div className="lg:col-span-7">
           <div className="grid gap-4 sm:grid-cols-2">
             {problems.map(([t, d], i) => (
-              <div key={t} className="flex flex-col justify-between rounded-xl border border-slate-200 bg-white p-5 shadow-xs transition duration-200 hover:-translate-y-0.5 hover:border-teal-500/60 hover:shadow-md">
+              <div key={t} className="group flex flex-col justify-between rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-teal-500/50 hover:shadow-xl">
                 <div>
                   <div className="flex items-center gap-3">
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-red-50 text-base font-bold text-red-600">
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-red-50 text-base font-black text-red-600 group-hover:bg-red-600 group-hover:text-white transition">
                       !
                     </span>
                     <h3 className="font-bold text-navy-900 text-base">{t}</h3>
                   </div>
-                  <p className="mt-2.5 text-sm leading-relaxed text-slate-600">{d}</p>
+                  <p className="mt-3 text-sm leading-relaxed text-slate-600">{d}</p>
                 </div>
-                <div className="mt-4 border-t border-slate-100 pt-3">
+                <div className="mt-4 border-t border-slate-100 pt-3 flex items-center justify-between">
                   <span className="text-xs font-semibold text-teal-600 flex items-center gap-1.5">
-                    ✓ Same-day visit available
+                    <span className="h-1.5 w-1.5 rounded-full bg-teal-500 animate-ping"></span>
+                    Same-day visit available
+                  </span>
+                  <span className="text-slate-400 group-hover:text-teal-600 group-hover:translate-x-1 transition font-bold text-xs">
+                    &rarr;
                   </span>
                 </div>
               </div>
@@ -182,29 +191,36 @@ export function Home() {
     <Section title="Why Tricity homeowners trust Kitchen King">
       <div className="grid items-center gap-8 md:grid-cols-12">
         <div className="md:col-span-5">
-          <img src="/images/chimney_technician.jpg" alt="Certified Chimney Technician" className="h-96 w-full rounded-2xl border border-slate-200 object-cover shadow-xl" />
+          <div className="group relative overflow-hidden rounded-3xl border border-slate-200 shadow-xl bg-slate-900">
+            <img src="/images/chimney_technician.jpg" alt="Certified Chimney Technician" className="h-96 w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+            <div className="absolute inset-0 bg-gradient-to-t from-navy-950/70 via-transparent to-transparent" />
+            <div className="absolute bottom-4 left-4 right-4 rounded-xl backdrop-blur-md bg-navy-900/80 border border-white/20 p-3 shadow-lg">
+              <p className="text-xs font-bold text-teal-300 uppercase tracking-wide">✓ 100% Doorstep Service</p>
+              <p className="text-[11px] text-slate-200 mt-0.5">Transparent inspection and test run before payment</p>
+            </div>
+          </div>
         </div>
         <div className="md:col-span-7">
           <ul className="space-y-4 text-slate-700">
-            <li className="flex items-start gap-3 rounded-xl border border-slate-100 bg-white p-4 shadow-xs">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-100 font-bold text-teal-700">✓</span>
+            <li className="group flex items-start gap-4 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-teal-400/50">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-teal-700 font-black text-sm group-hover:bg-teal-600 group-hover:text-white transition">✓</span>
               <div>
-                <strong className="text-navy-900 font-bold">Thorough Diagnostic Inspection:</strong>
-                <p className="mt-0.5 text-sm text-slate-600">We inspect the motor, suction flow, capacitors, switchboard, and ducting before providing clear advice.</p>
+                <strong className="text-navy-900 font-bold text-base">Thorough Diagnostic Inspection:</strong>
+                <p className="mt-1 text-sm text-slate-600 leading-relaxed">We inspect the motor, suction flow, capacitors, switchboard, and ducting before providing clear advice.</p>
               </div>
             </li>
-            <li className="flex items-start gap-3 rounded-xl border border-slate-100 bg-white p-4 shadow-xs">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-100 font-bold text-teal-700">✓</span>
+            <li className="group flex items-start gap-4 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-teal-400/50">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-teal-700 font-black text-sm group-hover:bg-teal-600 group-hover:text-white transition">✓</span>
               <div>
-                <strong className="text-navy-900 font-bold">Honest Repair vs Replacement Guidance:</strong>
-                <p className="mt-0.5 text-sm text-slate-600">If a straightforward filter degrease or minor switch fix restores full suction, we tell you plainly without needless upsells.</p>
+                <strong className="text-navy-900 font-bold text-base">Honest Repair vs Replacement Guidance:</strong>
+                <p className="mt-1 text-sm text-slate-600 leading-relaxed">If a straightforward filter degrease or minor switch fix restores full suction, we tell you plainly without needless upsells.</p>
               </div>
             </li>
-            <li className="flex items-start gap-3 rounded-xl border border-slate-100 bg-white p-4 shadow-xs">
-              <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-100 font-bold text-teal-700">✓</span>
+            <li className="group flex items-start gap-4 rounded-2xl border border-slate-200/90 bg-white p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-teal-400/50">
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-teal-50 text-teal-700 font-black text-sm group-hover:bg-teal-600 group-hover:text-white transition">✓</span>
               <div>
-                <strong className="text-navy-900 font-bold">Rapid Doorstep Response:</strong>
-                <p className="mt-0.5 text-sm text-slate-600">Same-day service slots available across Chandigarh, Mohali, Panchkula, Zirakpur, Kharar, and Ludhiana.</p>
+                <strong className="text-navy-900 font-bold text-base">Rapid Doorstep Response:</strong>
+                <p className="mt-1 text-sm text-slate-600 leading-relaxed">Same-day service slots available across Chandigarh, Mohali, Panchkula, Zirakpur, Kharar, and Ludhiana.</p>
               </div>
             </li>
           </ul>
@@ -217,10 +233,19 @@ export function Home() {
     </Section>
 
     <Section title="Ready to fix your kitchen chimney?">
-      <div className="rounded-2xl bg-navy-900 p-8 text-white md:p-12">
-        <h3 className="text-2xl font-bold md:text-3xl">Need Urgent Chimney Repair or Deep Cleaning?</h3>
-        <p className="mt-2 max-w-xl text-slate-300">Call our direct service hotline or chat on WhatsApp for fast response and appointment booking.</p>
-        <div className="mt-6"><Cta location="home-final" dark={true} /></div>
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy-900 via-navy-800 to-slate-950 p-8 text-white md:p-12 shadow-2xl border border-white/10">
+        <div className="pointer-events-none absolute -top-24 -right-24 h-80 w-80 rounded-full bg-teal-500/20 blur-3xl" />
+        <div className="pointer-events-none absolute inset-0 bg-grid-dots opacity-30" />
+        <div className="relative z-10 max-w-2xl">
+          <span className="inline-block rounded-full backdrop-blur-md bg-teal-500/20 border border-teal-500/40 px-3.5 py-1 text-xs font-bold text-teal-300 uppercase tracking-wider mb-3">
+            Fast Doorstep Booking
+          </span>
+          <h3 className="text-2xl font-black sm:text-3xl md:text-4xl">Need Urgent Chimney Repair or Deep Cleaning?</h3>
+          <p className="mt-3 text-slate-300 leading-relaxed">
+            Call our direct service hotline or chat on WhatsApp for fast response, upfront pricing, and convenient appointment booking.
+          </p>
+          <div className="mt-6"><Cta location="home-final" dark={true} /></div>
+        </div>
       </div>
     </Section>
   </>);
