@@ -114,13 +114,18 @@ export default function AdminDashboard() {
   }, [apiUrl, token, statusFilter, cityFilter, serviceFilter, search, handleLogout]);
 
   useEffect(() => {
+    const t = localStorage.getItem('admin_token');
+    if (!t) {
+      navigate('/admin/login', { replace: true });
+      return;
+    }
     const userStr = localStorage.getItem('admin_user');
     if (userStr) {
       try { setAdminUser(JSON.parse(userStr)); } catch {}
     }
     fetchHealth();
     fetchData();
-  }, [fetchHealth, fetchData]);
+  }, [navigate, fetchHealth, fetchData]);
 
   const handleStatusChange = async (id, newStatus) => {
     try {

@@ -500,9 +500,45 @@ export function Contact() {
 }
 
 export function Privacy() {
-  return (<><Seo path="/privacy-policy" title={`Privacy Policy | ${SITE.name}`} description="How we use the information you send in a service enquiry." />
-    <Hero h1="Privacy Policy"><p>Draft for review before publication.</p></Hero>
-    <Section title="Information we collect"><div className="max-w-2xl space-y-3 text-slate-700"><p>When you send an enquiry we collect your name, phone number, city, required service and optional message.</p><p>We use it only to respond to your request. Questions about your information: call {SITE.phoneDisplay} or write to us at {addressLine}.</p></div></Section></>);
+  return (
+    <>
+      <Seo
+        path="/privacy-policy"
+        title={`Privacy Policy | ${SITE.name}`}
+        description="Privacy policy and data protection practices at Kitchen King Chimney & RO Service."
+      />
+      <Hero h1="Privacy Policy">
+        <p className="text-slate-200">
+          Last updated: October 2026. How Kitchen King handles your booking details and service information.
+        </p>
+      </Hero>
+      <Section title="Our commitment to your privacy">
+        <div className="max-w-3xl space-y-5 text-slate-700 leading-relaxed">
+          <p>
+            At <strong>{SITE.name}</strong>, we respect your privacy. When you request a chimney, hob, or RO service visit through our website, phone, or WhatsApp, we collect only the essential details needed to fulfill your doorstep service.
+          </p>
+          <div className="rounded-xl border border-slate-200 bg-white p-5 space-y-3">
+            <h3 className="font-bold text-navy-900 text-lg">1. Information We Collect</h3>
+            <p className="text-sm">
+              We collect your name, contact phone number, service city/locality, and your appliance description so our technician can prepare appropriate tools and spare parts for the visit.
+            </p>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-white p-5 space-y-3">
+            <h3 className="font-bold text-navy-900 text-lg">2. How Your Information Is Used</h3>
+            <p className="text-sm">
+              Your contact details are used strictly to coordinate service appointments, provide upfront diagnostic estimates, and verify post-service performance. We do not sell, rent, or trade your personal data to any third-party advertisers.
+            </p>
+          </div>
+          <div className="rounded-xl border border-slate-200 bg-white p-5 space-y-3">
+            <h3 className="font-bold text-navy-900 text-lg">3. Contacting Us About Your Data</h3>
+            <p className="text-sm">
+              If you wish to update or request removal of your booking record, contact us directly at <a href={telHref} className="font-semibold text-teal-600 underline">{SITE.phoneDisplay}</a> or visit our service base at {addressLine}.
+            </p>
+          </div>
+        </div>
+      </Section>
+    </>
+  );
 }
 export function NotFound() {
   return (<><Seo title={`Page not found | ${SITE.name}`} description="This page does not exist." noindex /><Hero h1="Page not found"><p className="mb-4">The page you wanted is not here.</p><Link to="/" className="btn btn-wa">Go to home page</Link></Hero></>);

@@ -36,7 +36,12 @@ export const services = [
     intro: 'Reliable hob service, hob repair, hob installation, burner repair, and cooktop service. We safely resolve gas leakage issues to keep your kitchen secure.',
     faqs: [['How quickly do you attend gas leakage issues?', 'Gas leaks are handled with top urgency. We dispatch available doorstep technicians promptly across Chandigarh Tricity.'], ['Which brands of hobs do you repair?', 'We service all major brands including Glen, Faber, Elica, Sunflame, Prestige, Bosch, Hindware and Kaff.']] },
   { slug: 'uninstall-reinstall', title: 'Uninstallation and Reinstallation', short: 'Safe removal and refitting when you repaint, renovate or move.', image: '/images/service_uninstall.jpg', includes: ['Disconnection and removal', 'Duct and bracket handling', 'Refitting and test'] },
-  { slug: 'filter-cleaning', title: 'Chimney Filter Cleaning', short: 'Degreasing of baffle, mesh or cassette filters.', image: '/images/service_filter.jpg', includes: ['Filter removal', 'Degreasing', 'Refit and airflow check'] },
+  { slug: 'filter-cleaning', page: true, title: 'Chimney Filter Cleaning', short: 'Deep degreasing of baffle, mesh, and cassette filters for unhindered suction.',
+    image: '/images/service_filter.jpg',
+    includes: ['Filter removal and hot soak degreasing', 'Carbon filter replacement advice', 'Oil collector cup scrubbing', 'Refitting and airflow suction test'],
+    symptoms: ['Oil dripping from filter edges', 'Sticky yellow grease layer on filters', 'Smoke lingering instead of exhausting', 'Rattling filter vibration'],
+    intro: 'Blocked chimney filters force the motor to work harder, causing noisy operation and poor smoke capture. We deep-clean and degrease all baffle and cassette filters on site.',
+    faqs: [['Can heavily choked baffle filters be revived?', 'Yes. Stainless steel baffle filters respond very well to professional chemical degreasing, restoring full suction.'], ['How long does filter cleaning take?', 'Typically 45 to 60 minutes for thorough filter removal, hot degreasing, and refitting.']] },
   { slug: 'motor-suction', title: 'Motor and Suction Troubleshooting', short: 'Finding why suction is weak or the motor struggles.', image: '/images/service_motor.jpg', includes: ['Motor check', 'Duct blockage check', 'Capacitor and wiring inspection where applicable'] },
   { slug: 'noise-performance', title: 'Noise and Performance Troubleshooting', short: 'Tracking down vibration, rattling and humming.', image: '/images/service_noise.jpg', includes: ['Blade and fixing check', 'Loose part tightening', 'Test run'] }
 ];
