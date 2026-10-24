@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
 import { Phone, MessageCircle, Menu, X } from 'lucide-react';
 import { SITE, addressLine } from '../data/site';
-import { cities } from '../data/content';
+import { cities, services } from '../data/content';
 import { telHref, waHref } from '../lib/links';
 import { track } from '../lib/analytics';
 const nav = [['/', 'Home'], ['/services', 'Services'], ['/locations', 'Locations'], ['/about', 'About'], ['/contact', 'Contact']];
@@ -41,18 +41,76 @@ export default function Layout() {
     </div>
     {open && <nav aria-label="Mobile" className="flex flex-col border-t px-4 py-2 md:hidden">{nav.map(([to, l]) => <NavLink key={to} to={to} end className={link}>{l}</NavLink>)}</nav>}</div>
     <main id="main"><Outlet /></main>
-    <footer className="bg-navy-900 text-slate-300"><div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 md:grid-cols-3">
-      <div>
-        <div className="mb-3 inline-block rounded-xl bg-white p-2 shadow-xs">
-          <img src="/logo.png" alt={SITE.name} className="h-12 w-auto object-contain" />
+    <footer className="bg-navy-900 text-slate-300">
+      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Business NAP */}
+        <div>
+          <div className="mb-3 inline-block rounded-xl bg-white p-2 shadow-xs">
+            <img src="/logo.png" alt={SITE.name} className="h-12 w-auto object-contain" />
+          </div>
+          <p className="font-bold text-white text-base">{SITE.name} Service</p>
+          <p className="mt-1 text-xs text-slate-400 leading-relaxed">
+            Specialized doorstep Kitchen Chimney, Hob, Gas Stove & RO Water Purifier repair, deep degreasing, and installation.
+          </p>
+          <p className="mt-3 text-xs text-slate-300">{addressLine}</p>
+          <a className="mt-2 block font-bold text-teal-400 hover:underline" href={telHref}>{SITE.phoneDisplay}</a>
+          <p className="mt-1 text-[11px] text-slate-400">Open 7 Days: 8:00 AM – 8:00 PM</p>
         </div>
-        <p className="font-bold text-white text-base">{SITE.name} Chimney & RO Service</p>
-        <p className="mt-1 text-sm text-slate-300">{addressLine}</p>
-        <a className="mt-2 block font-semibold text-teal-400" href={telHref}>{SITE.phoneDisplay}</a>
+
+        {/* Core Services */}
+        <div>
+          <p className="font-bold text-white text-sm uppercase tracking-wider">Our Services</p>
+          <ul className="mt-3 space-y-2 text-xs">
+            {services.filter(s => s.page).map(s => (
+              <li key={s.slug}>
+                <Link to={`/services/${s.slug}`} className="hover:text-teal-400 transition">
+                  {s.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* High-Intent SEO City Locations */}
+        <div>
+          <p className="font-bold text-white text-sm uppercase tracking-wider">Service Areas</p>
+          <ul className="mt-3 space-y-2 text-xs">
+            {cities.map(c => (
+              <li key={c.slug}>
+                <Link to={`/chimney-service-in-${c.slug}`} className="hover:text-teal-400 transition">
+                  Chimney Service in {c.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-xs">
+            <Link to="/locations" className="text-teal-400 hover:underline">
+              View all Tricity coverage &rarr;
+            </Link>
+          </p>
+        </div>
+
+        {/* Quick Links & Legal */}
+        <div>
+          <p className="font-bold text-white text-sm uppercase tracking-wider">Quick Links</p>
+          <ul className="mt-3 space-y-2 text-xs">
+            {[...nav, ['/privacy-policy', 'Privacy Policy'], ['/admin', 'Admin Login']].map(([to, l]) => (
+              <li key={to}>
+                <Link to={to} className="hover:text-teal-400 transition">{l}</Link>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-4 rounded-lg border border-slate-800 bg-slate-800/40 p-3">
+            <p className="text-[11px] font-semibold text-teal-300">✓ Genuine Doorstep Care</p>
+            <p className="text-[10px] text-slate-400 mt-0.5">Pay after test run & inspection across Chandigarh, Mohali & Panchkula.</p>
+          </div>
+        </div>
       </div>
-      <div><p className="font-bold text-white">Service Locations</p><ul className="mt-2 space-y-1">{cities.map(c => <li key={c.slug}><Link to={`/chimney-service-in-${c.slug}`}>{c.name}</Link></li>)}</ul><p className="mt-2 text-sm text-slate-400"><Link to="/locations" className="text-teal-400 underline">View all coverage areas &rarr;</Link></p></div>
-      <div><p className="font-bold text-white">Links</p><ul className="mt-2 space-y-1">{[...nav, ['/privacy-policy', 'Privacy Policy'], ['/admin', 'Admin Login']].map(([to, l]) => <li key={to}><Link to={to}>{l}</Link></li>)}</ul></div>
-    </div></footer>
+
+      <div className="border-t border-slate-800 py-4 text-center text-xs text-slate-500">
+        <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved. Chandigarh Tricity Doorstep Appliance Care.</p>
+      </div>
+    </footer>
     <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 border-t bg-white p-2 md:hidden">
       <a href={telHref} onClick={() => track('call_click', { location: 'sticky' })} className="btn btn-primary"><Phone size={18} />Call Now</a>
       <a href={waHref()} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', { location: 'sticky' })} className="btn btn-outline"><MessageCircle size={18} />WhatsApp</a>

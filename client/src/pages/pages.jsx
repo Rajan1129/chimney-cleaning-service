@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
 import { Phone, MessageCircle } from 'lucide-react';
-import Seo, { business, breadcrumb, webSite, serviceLd } from '../components/Seo';
+import Seo, { business, breadcrumb, webSite, serviceLd, faqLd } from '../components/Seo';
 import Cta, { Faqs, Section, Hero, TrustBar } from '../components/Cta';
 import EnquiryForm from '../components/EnquiryForm';
 import { SITE, addressLine, mapsUrl } from '../data/site';
@@ -55,9 +55,15 @@ const Process = () => (
 );
 
 export function Home() {
-  const title = 'Kitchen Chimney Repair & Service in Chandigarh Tricity';
+  const title = 'Kitchen Chimney Repair & Cleaning Service Chandigarh Tricity';
   return (<>
-    <Seo title={`${title} | ${SITE.name}`} description="Kitchen chimney repair, cleaning and installation in Chandigarh, Mohali, Kharar, Zirakpur, Panchkula and Ludhiana. Call or WhatsApp." jsonLd={[business(), webSite()]} />
+    <Seo
+      path="/"
+      title={`${title} | ${SITE.name}`}
+      description="Doorstep kitchen chimney repair, deep chemical cleaning, hob repair and installation across Chandigarh, Mohali, Panchkula, Zirakpur, Kharar. Fast doorstep visit. Call +91 62630 13446."
+      image="/images/hero_chimney.jpg"
+      jsonLd={[business(), webSite(), faqLd(homeFaqs)]}
+    />
     <Hero h1="Expert Kitchen Chimney Repair & Service in Chandigarh Tricity" image="/images/hero_chimney.jpg" imageAlt="Kitchen Chimney Service in Chandigarh">
       <div className="inline-flex items-center gap-2 rounded-full bg-teal-500/20 px-3 py-1 text-xs font-semibold text-teal-300 mb-4 border border-teal-500/30">
         <span>✓</span> Genuine Doorstep Chimney Care in Tricity
@@ -257,7 +263,13 @@ export function ServicePage() {
   if (!s) return <NotFound />;
   const path = `/services/${s.slug}`;
   return (<>
-    <Seo path={path} title={`${s.title} in Chandigarh Tricity | ${SITE.name}`} description={s.short} jsonLd={[serviceLd(s), breadcrumb([['Home', '/'], ['Services', '/services'], [s.title, path]])]} />
+    <Seo
+      path={path}
+      title={`${s.title} in Chandigarh Tricity | ${SITE.name}`}
+      description={`${s.short} Doorstep service across Chandigarh, Mohali, Panchkula, Zirakpur & Kharar. Genuine parts & transparent pricing.`}
+      image={s.image}
+      jsonLd={[serviceLd(s), breadcrumb([['Home', '/'], ['Services', '/services'], [s.title, path]]), faqLd(s.faqs)]}
+    />
     <Hero h1={`${s.title} in Chandigarh Tricity`} crumbs={<Crumbs items={[['Home', '/'], ['Services', '/services'], [s.title, path]]} />} image={s.image} imageAlt={s.title}>
       <p className="mb-6 text-slate-200 leading-relaxed">{s.intro}</p>
       <Cta location={s.slug} />
@@ -300,7 +312,8 @@ export function Locations() {
         path="/locations"
         title={`Kitchen Chimney Service Locations & Coverage Areas | ${SITE.name}`}
         description="Explore our doorstep kitchen chimney repair, deep cleaning, and installation service areas across Chandigarh Tricity, Mohali, Panchkula, Zirakpur, Kharar and Ludhiana."
-        jsonLd={[business(), breadcrumb([['Home', '/'], ['Locations', '/locations']])]}
+        image="/images/tricity_apartments.jpg"
+        jsonLd={[business(), breadcrumb([['Home', '/'], ['Locations', '/locations']]), faqLd(homeFaqs)]}
       />
       <Hero
         h1="Kitchen Chimney Service Coverage & Locations"
@@ -396,13 +409,25 @@ export function CityPage({ slug }) {
   if (!c) return <NotFound />;
   const path = `/chimney-service-in-${currentSlug}`;
   return (<>
-    <Seo path={path} title={`${c.title} | ${SITE.name}`} description={c.desc} jsonLd={[business(), breadcrumb([['Home', '/'], ['Locations', '/locations'], [c.name, path]])]} />
+    <Seo
+      path={path}
+      title={`${c.title} | ${SITE.name}`}
+      description={c.desc}
+      image={c.image}
+      jsonLd={[
+        business(),
+        breadcrumb([['Home', '/'], ['Locations', '/locations'], [c.name, path]]),
+        faqLd(c.faqs)
+      ]}
+    />
     <Hero h1={c.h1} crumbs={<Crumbs items={[['Home', '/'], ['Locations', '/locations'], [c.name, path]]} />} image={c.image} imageAlt={`Residential society chimney service in ${c.name}`}>
       <p className="mb-6 text-slate-200 leading-relaxed">{c.intro}</p>
       <Cta location={currentSlug} />
     </Hero>
+
+    {/* Sectors & Areas */}
     <Section title={`Sectors & Areas Covered in ${c.name}`}>
-      <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3">
+      <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
         {c.sectors.map(s => (
           <div key={s} className="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white p-3.5 shadow-xs">
             <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-teal-100 text-teal-700 text-xs font-bold">✓</span>
@@ -411,9 +436,50 @@ export function CityPage({ slug }) {
         ))}
       </div>
       <p className="mt-4 text-xs text-slate-500">
-        Don't see your specific sector or colony listed? Call or WhatsApp us with your address—our technicians cover all residential and commercial addresses in and around {c.name}.
+        Don't see your specific sector, society, or colony listed? Call or WhatsApp us with your address—our technicians cover all residential and commercial addresses in and around {c.name}.
       </p>
     </Section>
+
+    {/* Why Choose Section for Local Trust & SEO */}
+    <Section title={`Why Choose Kitchen King for Chimney Repair in ${c.name}`} tint>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-100 text-teal-700 text-lg mb-3">⚡</span>
+          <h4 className="font-bold text-navy-900">Same-Day Doorstep Visit</h4>
+          <p className="mt-1 text-xs text-slate-600 leading-relaxed">Fast response across all {c.name} sectors, societies, and kothis with pre-confirmed appointment slots.</p>
+        </div>
+        <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-100 text-teal-700 text-lg mb-3">🔍</span>
+          <h4 className="font-bold text-navy-900">Upfront Transparent Diagnosis</h4>
+          <p className="mt-1 text-xs text-slate-600 leading-relaxed">Technician inspects the chimney motor, filter, and ducting, providing a clear quote before starting.</p>
+        </div>
+        <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-100 text-teal-700 text-lg mb-3">🛡️</span>
+          <h4 className="font-bold text-navy-900">Genuine Spare Parts</h4>
+          <p className="mt-1 text-xs text-slate-600 leading-relaxed">Brand-compatible copper-wound motors, heavy-duty capacitors, baffle filters, and touch panels.</p>
+        </div>
+        <div className="rounded-xl border border-slate-200 bg-white p-5 shadow-xs">
+          <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-teal-100 text-teal-700 text-lg mb-3">✅</span>
+          <h4 className="font-bold text-navy-900">Pay After Test Run</h4>
+          <p className="mt-1 text-xs text-slate-600 leading-relaxed">We test smoke exhaust suction, noise balance, and hob flame before accepting payment.</p>
+        </div>
+      </div>
+    </Section>
+
+    {/* Brand Coverage in City */}
+    <Section title={`All Kitchen Chimney & Hob Brands Serviced in ${c.name}`}>
+      <p className="mb-4 text-slate-600 text-sm">
+        Our technicians carry diagnostic kits and genuine compatible spares for all popular chimney and hob manufacturers in {c.name}:
+      </p>
+      <div className="flex flex-wrap gap-2.5">
+        {brands.map(b => (
+          <span key={b} className="rounded-lg border border-slate-200 bg-slate-50 px-4 py-2 text-xs font-bold text-slate-800 shadow-2xs">
+            {b} Chimney & Hob Service
+          </span>
+        ))}
+      </div>
+    </Section>
+
     <Section title={`What homeowners & societies in ${c.name} ask us about`} tint>
       <ul className="grid gap-3 sm:grid-cols-3">
         {c.local.map(l => (
@@ -423,6 +489,7 @@ export function CityPage({ slug }) {
         ))}
       </ul>
     </Section>
+
     <Section title={`Services available in ${c.name}`}>
       <Cards items={services.filter(s => s.page).map(s => (
         <Card key={s.slug} image={s.image} imageAlt={s.title}>
@@ -432,9 +499,11 @@ export function CityPage({ slug }) {
         </Card>
       ))} />
     </Section>
+
     <Section title={`${c.name} chimney service FAQs`} tint>
       <Faqs items={c.faqs} />
     </Section>
+
     <Section title="Nearby service areas">
       <AreaCards list={c.related.map(r => cities.find(x => x.slug === r)).filter(Boolean)} />
     </Section>
