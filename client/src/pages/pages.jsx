@@ -6,6 +6,7 @@ import EnquiryForm from '../components/EnquiryForm';
 import { SITE, addressLine, mapsUrl } from '../data/site';
 import { services, cities, problems, processSteps, homeFaqs, brands } from '../data/content';
 import { telHref, waHref } from '../lib/links';
+import BeforeAfterSection from '../components/BeforeAfterSection';
 
 const Crumbs = ({ items }) => <nav aria-label="Breadcrumb" className="mb-3 text-sm text-slate-300">{items.map(([l, p], i) => <span key={p}>{i > 0 && ' / '}{i < items.length - 1 ? <Link to={p} className="underline">{l}</Link> : l}</span>)}</nav>;
 const Cards = ({ items }) => <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">{items}</div>;
@@ -164,6 +165,9 @@ export function Home() {
       </div>
     </Section>
 
+    {/* Real Before & After Transformation Section with Interactive Glassmorphism */}
+    <BeforeAfterSection />
+
     <Section title="How our service works">
       <Process />
     </Section>
@@ -296,6 +300,7 @@ export function ServicePage() {
     <Section title="Our systematic 4-step process">
       <Process />
     </Section>
+    <BeforeAfterSection />
     <Section title="Frequently asked questions" tint>
       <Faqs items={s.faqs} />
     </Section>

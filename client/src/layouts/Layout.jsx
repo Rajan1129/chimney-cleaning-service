@@ -12,10 +12,11 @@ export default function Layout() {
   const link = ({ isActive }) => 'px-3 py-2 rounded ' + (isActive ? 'text-teal-600 font-semibold' : 'hover:text-teal-600');
   return (<div className="pb-16 md:pb-0">
     <a href="#main" className="sr-only focus:not-sr-only">Skip to content</a>
-    <div className="sticky top-0 z-30 border-b bg-white"><div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5">
+    <div className="sticky top-0 z-30 border-b border-slate-200/80 backdrop-blur-md bg-white/85 shadow-xs">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5">
       <Link to="/" className="flex items-center gap-2.5">
-        <img src="/logo.png" alt={SITE.name} className="h-12 w-auto object-contain" />
-        <span className="text-xl font-bold tracking-tight text-navy-900 hidden sm:inline">{SITE.name}</span>
+        <img src="/logo.png" alt={SITE.name} className="h-12 w-auto object-contain drop-shadow-xs" />
+        <span className="text-xl font-black tracking-tight text-navy-900 hidden sm:inline">{SITE.name}</span>
       </Link>
       <nav aria-label="Main" className="hidden gap-1 md:flex">{nav.map(([to, l]) => <NavLink key={to} to={to} end className={link}>{l}</NavLink>)}</nav>
       <div className="flex items-center gap-2">
@@ -39,7 +40,7 @@ export default function Layout() {
         </button>
       </div>
     </div>
-    {open && <nav aria-label="Mobile" className="flex flex-col border-t px-4 py-2 md:hidden">{nav.map(([to, l]) => <NavLink key={to} to={to} end className={link}>{l}</NavLink>)}</nav>}</div>
+    {open && <nav aria-label="Mobile" className="flex flex-col border-t border-slate-200/80 backdrop-blur-lg bg-white/95 px-4 py-3 md:hidden">{nav.map(([to, l]) => <NavLink key={to} to={to} end className={link}>{l}</NavLink>)}</nav>}</div>
     <main id="main"><Outlet /></main>
     <footer className="bg-navy-900 text-slate-300">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-2 lg:grid-cols-4">
@@ -111,8 +112,8 @@ export default function Layout() {
         <p>© {new Date().getFullYear()} {SITE.name}. All rights reserved. Chandigarh Tricity Doorstep Appliance Care.</p>
       </div>
     </footer>
-    <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 border-t bg-white p-2 md:hidden">
-      <a href={telHref} onClick={() => track('call_click', { location: 'sticky' })} className="btn btn-primary"><Phone size={18} />Call Now</a>
-      <a href={waHref()} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', { location: 'sticky' })} className="btn btn-outline"><MessageCircle size={18} />WhatsApp</a>
+    <div className="fixed inset-x-0 bottom-0 z-30 grid grid-cols-2 gap-2 border-t border-slate-200/80 backdrop-blur-lg bg-white/90 p-2.5 md:hidden shadow-lg">
+      <a href={telHref} onClick={() => track('call_click', { location: 'sticky' })} className="btn btn-primary shadow-md"><Phone size={18} />Call Now</a>
+      <a href={waHref()} target="_blank" rel="noopener noreferrer" onClick={() => track('whatsapp_click', { location: 'sticky' })} className="btn btn-outline backdrop-blur-md bg-white/70 shadow-sm"><MessageCircle size={18} />WhatsApp</a>
     </div></div>);
 }

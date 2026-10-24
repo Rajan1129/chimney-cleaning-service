@@ -145,6 +145,26 @@ routeList.push({
           `).join('')}
         </div>
       </section>
+      <section class="bg-navy-900 text-white p-8 rounded-2xl">
+        <h2 class="text-2xl font-bold mb-3">Real Before & After Kitchen Chimney & Hob Cleaning Results</h2>
+        <p class="text-slate-300 text-sm mb-6 leading-relaxed">
+          See the visual transformation of heavily choked baffle filters, carbonized gas stove burners, and oil-dripping chimney housings professionally restored by Kitchen King technicians across Chandigarh Tricity.
+        </p>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="p-4 rounded-xl bg-white/10 border border-white/20">
+            <h3 class="font-bold text-teal-300">Baffle Filter Degreasing</h3>
+            <p class="text-xs text-slate-300 mt-1">Before: Saturated yellow grease blocking suction by 60%.<br/>After: 100% degreased stainless steel, full airflow restored.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white/10 border border-white/20">
+            <h3 class="font-bold text-teal-300">Gas Hob & Burners</h3>
+            <p class="text-xs text-slate-300 mt-1">Before: Clogged burner nozzles, low irregular yellow flame.<br/>After: Uniform blue flame, polished brass, safe gas flow.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-white/10 border border-white/20">
+            <h3 class="font-bold text-teal-300">Chimney Housing & Duct</h3>
+            <p class="text-xs text-slate-300 mt-1">Before: Thick sticky oil coat inside blower cavity.<br/>After: Sanitized and degreased surfaces with test run.</p>
+          </div>
+        </div>
+      </section>
       <section class="bg-slate-50 p-8 rounded-2xl">
         <h2 class="text-2xl font-bold text-navy-900 mb-6">Chimney Service Coverage Across Tricity</h2>
         <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
