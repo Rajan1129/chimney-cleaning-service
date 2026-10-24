@@ -7,11 +7,40 @@ import { telHref, waHref } from '../lib/links';
 import { track } from '../lib/analytics';
 const nav = [['/', 'Home'], ['/services', 'Services'], ['/locations', 'Locations'], ['/about', 'About'], ['/contact', 'Contact']];
 export default function Layout() {
-  const [open, setOpen] = useState(false); const { pathname } = useLocation();
+  const [open, setOpen] = useState(false);
+  const [callToast, setCallToast] = useState(false);
+  const { pathname } = useLocation();
+
   useEffect(() => { setOpen(false); window.scrollTo(0, 0); }, [pathname]);
+
+  useEffect(() => {
+    let timer;
+    const onGlobalClick = (e) => {
+      const anchor = e.target.closest('a[href^="tel:"]');
+      if (!anchor) return;
+      if (navigator?.clipboard?.writeText) {
+        navigator.clipboard.writeText(SITE.phone).catch(() => {});
+      }
+      setCallToast(true);
+      clearTimeout(timer);
+      timer = setTimeout(() => setCallToast(false), 3500);
+    };
+    document.addEventListener('click', onGlobalClick);
+    return () => {
+      document.removeEventListener('click', onGlobalClick);
+      clearTimeout(timer);
+    };
+  }, []);
+
   const link = ({ isActive }) => 'px-3 py-2 rounded ' + (isActive ? 'text-teal-600 font-semibold' : 'hover:text-teal-600');
   return (<div className="pb-16 md:pb-0">
     <a href="#main" className="sr-only focus:not-sr-only">Skip to content</a>
+    {callToast && (
+      <aside aria-label="Calling status" aria-live="polite" className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2.5 rounded-full border border-teal-400/40 bg-navy-900/95 text-white px-4 py-2 text-xs shadow-2xl backdrop-blur-md">
+        <Phone size={14} className="text-teal-400 shrink-0 animate-pulse" />
+        <span>Calling <strong>{SITE.phoneDisplay}</strong> &bull; <span className="text-teal-300">Number copied</span></span>
+      </aside>
+    )}
     <div className="sticky top-0 z-30 border-b border-slate-200/80 backdrop-blur-md bg-white/85 shadow-xs">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-2.5">
       <Link to="/" className="flex items-center gap-2.5">
