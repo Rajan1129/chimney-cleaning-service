@@ -6,4 +6,4 @@ Disallow: /admin/
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://kitchenkingservice.com/sitemap.xml
+Sitemap: https://chimneyservicecleaning.in/sitemap.xml

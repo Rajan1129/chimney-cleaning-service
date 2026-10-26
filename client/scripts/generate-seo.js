@@ -7,9 +7,9 @@ if (fs.existsSync('.env')) {
   } catch (e) {}
 }
 
-const rawSite = (process.env.SITE_URL || process.env.VITE_SITE_URL || 'https://kitchenkingservice.com').replace(/\/$/, '');
+const rawSite = (process.env.SITE_URL || process.env.VITE_SITE_URL || 'https://chimneyservicecleaning.in').replace(/\/$/, '');
 const isLocal = !rawSite || rawSite.includes('localhost') || rawSite.includes('127.0.0.1');
-const site = isLocal ? 'https://kitchenkingservice.com' : rawSite;
+const site = isLocal ? 'https://chimneyservicecleaning.in' : rawSite;
 
 const today = new Date().toISOString().split('T')[0];
 

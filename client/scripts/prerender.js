@@ -16,7 +16,7 @@ if (!fs.existsSync(distDir)) {
 const templatePath = path.join(distDir, 'index.html');
 const templateHtml = fs.readFileSync(templatePath, 'utf8');
 
-const CANONICAL_URL = 'https://kitchenkingservice.com';
+const CANONICAL_URL = process.env.VITE_SITE_URL || 'https://chimneyservicecleaning.in';
 const BUSINESS_NAME = 'Kitchen King';
 const PHONE_DISPLAY = '+91 62630 13446';
 const PHONE_TEL = '+916263013446';

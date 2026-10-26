@@ -1,7 +1,7 @@
 // Single source of truth for business details. Edit here only.
 export const CANONICAL_URL = (import.meta.env.VITE_SITE_URL && !import.meta.env.VITE_SITE_URL.includes('localhost'))
   ? import.meta.env.VITE_SITE_URL.replace(/\/$/, '')
-  : 'https://kitchenkingservice.com';
+  : 'https://chimneyservicecleaning.in';
 
 export const SITE = {
   name: import.meta.env.VITE_BUSINESS_NAME || 'Kitchen King',
@@ -9,7 +9,7 @@ export const SITE = {
   phoneDisplay: '+91 62630 13446',
   phoneTel: '+916263013446',
   waNumber: '916263013446',
-  email: 'service@kitchenkingservice.com',
+  email: 'service@chimneyservicecleaning.in',
   address: {
     street: 'Sector 39, Maloya',
     city: 'Chandigarh',
